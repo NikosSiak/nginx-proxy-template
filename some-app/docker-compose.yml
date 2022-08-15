@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    restart: always
+    ports:
+      - '1312:1312'
+    environment:
+      VIRTUAL_HOST: example.org
+      VIRTUAL_PORT: 1312
+      LETSENCRYPT_HOST: example.org
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
